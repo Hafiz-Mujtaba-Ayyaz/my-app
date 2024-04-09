@@ -17,7 +17,7 @@ const UserForm = () => {
     },
     validationSchema: Yup.object({
       firstName: Yup.string().required('Required'),
-      lastName: Yup.string().required('Required'),
+      // lastName: Yup.string().required('Required'),
       age: Yup.number().required('Required').positive('Must be positive').integer('Must be an integer'),
       cnic: Yup.string().required('Required').matches(/^\d{5}-\d{7}-\d$/, 'Invalid CNIC format (xxxxx-xxxxxxx-x)')
     }),
@@ -38,13 +38,14 @@ const UserForm = () => {
           value={formik.values.firstName}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          placeholder="First Name"
+          placeholder="Name"
+          autoComplete='off'
         />
         {formik.touched.firstName && formik.errors.firstName ? (
           <div className="error-message">{formik.errors.firstName}</div>
         ) : null}
 
-        <input
+        {/* <input
           className="form-input"
           type="text"
           name="lastName"
@@ -55,7 +56,7 @@ const UserForm = () => {
         />
         {formik.touched.lastName && formik.errors.lastName ? (
           <div className="error-message">{formik.errors.lastName}</div>
-        ) : null}
+        ) : null} */}
 
         <input
           className="form-input"
@@ -78,6 +79,7 @@ const UserForm = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           placeholder="CNIC (xxxxx-xxxxxxx-x)"
+          autoComplete='off'
         />
         {formik.touched.cnic && formik.errors.cnic ? (
           <div className="error-message">{formik.errors.cnic}</div>
